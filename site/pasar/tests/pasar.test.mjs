@@ -96,7 +96,7 @@ class PasarTest {
     assert.match(front, /Indonesian or English/);
     assert.match(front, /cannot take payment/);
     assert.match(front, /track a delivery/);
-    assert.deepEqual(PasarTest.agent(loaded, "pasar_guide").tools, ["market_scout"]);
+    assert.deepEqual(PasarTest.agent(loaded, "pasar_guide").tools, ["market_scout", "order_runner"]);
   }
 
   /** market_scout has both partner tools, the partner rules and the personal-data rule. */
@@ -116,13 +116,40 @@ class PasarTest {
     assert.ok(rules.includes("It never carries the buyer's name, phone number, address or anything personal"));
     assert.ok(rules.includes("only food, quantities, fulfilment (pickup or delivery) and area"));
     assert.ok(rules.includes("under 140 characters"));
-    assert.ok(rules.includes("Pasar never places an order itself."));
+    assert.ok(rules.includes("Pasar cannot take payment, place an order itself"));
     assert.ok(rules.includes("Partner tools ask another site's assistant"));
     assert.ok(rules.includes("the first 140 characters of your request, so keep it shorter"));
     assert.ok(rules.includes("Never put names, emails, phone numbers or booking codes in a request."));
     assert.ok(rules.includes("Call each partner at most once per visitor message."));
     assert.ok(rules.includes("always give its link from website_list_warungs"));
     assert.ok(!PasarTest.agent(loaded, "pasar_guide").instructions.includes("Partner tools ask another site's assistant"));
+  }
+
+  /** order_runner has both partner tools and the partner rules. */
+  static async testRunnerHasPartnerTools() {
+    const loaded = await PasarTest.load();
+    const runner = PasarTest.agent(loaded, "order_runner");
+    assert.deepEqual([...runner.tools].sort(), Object.values(PARTNER_TOOLS).sort());
+    assert.ok(runner.instructions.includes("Partner tools ask another site's assistant"));
+    assert.ok(runner.instructions.includes("Call each partner at most once per visitor message."));
+  }
+
+  /** order_runner makes one call and never carries personal data. */
+  static async testRunnerRules() {
+    const { instructions } = PasarTest.agent(await PasarTest.load(), "order_runner");
+    assert.ok(instructions.includes("Make exactly ONE call"));
+    assert.ok(instructions.includes("Never include names, phone numbers or addresses."));
+    assert.ok(instructions.includes("Never ask about price or availability"));
+  }
+
+  /** market_scout only finds and compares, and pasar_guide routes orders to order_runner. */
+  static async testScoutDoesNotOrder() {
+    const loaded = await PasarTest.load();
+    const scout = PasarTest.agent(loaded, "market_scout");
+    assert.ok(!/Place order:/i.test(scout.instructions));
+    assert.ok(!/place an order in its own window|order to place/i.test(JSON.stringify(scout)));
+    assert.ok(scout.instructions.includes("You never place orders."));
+    assert.match(PasarTest.agent(loaded, "pasar_guide").instructions, /call ONLY order_runner, never market_scout/);
   }
 
   /** The manifest allows only the warung origin and keeps the peer policy closed. */
@@ -213,6 +240,9 @@ class PasarTest {
 
 test("network is valid and keeps its grounding rules", PasarTest.testNetworkIsValid);
 test("market_scout asks both warung, with the personal-data rule", PasarTest.testScoutAsksBothPartners);
+test("order_runner has both partner tools and the partner rules", PasarTest.testRunnerHasPartnerTools);
+test("order_runner makes one call and sends no personal data", PasarTest.testRunnerRules);
+test("market_scout does not order and pasar_guide routes orders", PasarTest.testScoutDoesNotOrder);
 test("allowed_peers is the warung origin and the peer policy is closed", PasarTest.testManifestPeers);
 test("list_warungs is the only action and the bridge shares none", PasarTest.testActionsMatchManifest);
 test("the agent reads the warung list through website_list_warungs", PasarTest.testListWarungsRunsAsTool);
