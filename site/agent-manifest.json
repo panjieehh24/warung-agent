@@ -1,0 +1,77 @@
+{
+  "brand": "Warung Agent Builder",
+  "networks": [
+    {
+      "name": "warung_builder",
+      "front_man": "builder_guide",
+      "hocon": "./warung_builder.network.json",
+      "description": "Tell me about your shop or paste your WhatsApp menu, and I will fill in the form for you. Bahasa Indonesia or English.",
+      "tags": [
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "Nasi goreng 15rb, mie goreng 14rb, es teh 4rb",
+        "Nama warung saya Warung Bu Sri di Kemang, buka Senin-Sabtu 07.00-15.00, WhatsApp 0812-3456-7890",
+        "What's still missing before I can download?",
+        "Publish it for me and take payments"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "warung_builder",
+    "front_man": "builder_guide",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#9a3412"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "warung_builder",
+        "front_man": "builder_guide",
+        "aliases": [
+          "warung_builder",
+          "builder_guide"
+        ],
+        "url": "warung_builder"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_builder_state",
+      "fill_shop_details",
+      "fill_menu"
+    ]
+  }
+}

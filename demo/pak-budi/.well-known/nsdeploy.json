@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "warung",
+      "front_man": "warung_assistant",
+      "aliases": [
+        "warung",
+        "warung_assistant"
+      ],
+      "url": "warung"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

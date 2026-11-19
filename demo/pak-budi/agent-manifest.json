@@ -1,0 +1,78 @@
+{
+  "brand": "Bakmi Pak Budi Assistant",
+  "networks": [
+    {
+      "name": "warung",
+      "front_man": "warung_assistant",
+      "hocon": "./warung.network.json",
+      "description": "Tanya menu, harga, dan jam buka Bakmi Pak Budi, lalu pesan lewat WhatsApp. Ask about the menu or place an order.",
+      "tags": [
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "Ada menu vegetarian di bawah Rp20.000?",
+        "Which dishes are spicy, and which are sold out today?",
+        "Pesan 2 porsi menu termurah, ambil sendiri.",
+        "What are the opening hours, and do you deliver?",
+        "Bisa bayar pakai kartu atau lacak pesanan saya?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "warung",
+    "front_man": "warung_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#1e3a8a"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "warung",
+        "front_man": "warung_assistant",
+        "aliases": [
+          "warung",
+          "warung_assistant"
+        ],
+        "url": "warung"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_warung_state",
+      "send_order_whatsapp",
+      "place_order"
+    ]
+  }
+}

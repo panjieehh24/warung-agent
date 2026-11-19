@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warung Agent: your warung on the agentic web</title>
+  <meta name="description" content="Put your warung on the agentic web in one minute. Build a menu site that AI agents can read and order from, free, ending in your own WhatsApp.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="lib/jszip.min.js"></script>
+  <script type="module" src="landing.js"></script>
+  <script type="module" src="builder.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+<a class="skip" href="#builder">Skip to the Builder</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="brand">Warung Agent</p>
+    <h1>Your warung on the agentic web in one minute.</h1>
+    <p class="sub" lang="id">Warung kamu di web agen AI, dalam satu menit.</p>
+    <p class="problem">Indonesia's small food sellers take orders on WhatsApp, so AI agents cannot see them.
+      <span lang="id">Penjual makanan kecil menerima pesanan lewat WhatsApp, jadi agen AI tidak bisa menemukan mereka.</span></p>
+
+    <nav class="doors" aria-label="Choose your door">
+      <a class="door" href="#builder">
+        <strong>I sell food</strong>
+        <span lang="id">Saya jualan</span>
+        <small>Build your warung site</small>
+      </a>
+      <a class="door" href="./pasar/">
+        <strong>I'm hungry</strong>
+        <span lang="id">Saya lapar</span>
+        <small>Ask agents across warung</small>
+      </a>
+      <a class="door" href="" data-repo="">
+        <strong>I'm a developer</strong>
+        <span>Open-source kit</span>
+        <small>Read the code on GitHub</small>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" aria-labelledby="how-heading">
+    <h2 id="how-heading">How it works <span class="id" lang="id">Cara kerjanya</span></h2>
+    <ol class="steps">
+      <li><strong>Fill in your shop and menu.</strong> Paste the menu you already send on WhatsApp, or type it in.</li>
+      <li><strong>Download your site (.zip).</strong> It is a complete menu page with its own assistant.</li>
+      <li><strong>Put it online, free.</strong> Drag the folder to a free host. Buyers and AI agents can then find you, and orders open your WhatsApp.</li>
+    </ol>
+    <p class="privacy"><strong>Privacy.</strong> Your AI key stays in your browser. The shop never sees it. Orders go straight to the shop's WhatsApp, with no account and no middleman.
+      <span lang="id">Kunci AI tetap di browser kamu. Pesanan langsung ke WhatsApp warung.</span></p>
+  </section>
+
+  <section id="builder" class="wrap" aria-labelledby="builder-heading">
+    <h2 id="builder-heading">Build your warung site <span class="id" lang="id">Buat situs warung</span></h2>
+    <p class="hint">Tip: paste the menu you already send on WhatsApp to the <a href="#assistant">assistant below</a> and it will fill in the table for you.
+      <span lang="id">Tempel menu WhatsApp kamu ke asisten, nanti tabelnya diisi otomatis.</span></p>
+
+    <form id="builder-form" novalidate onsubmit="return false">
+      <p id="err-general" class="error" role="alert" hidden></p>
+
+      <fieldset>
+        <legend>Shop details <span class="id" lang="id">Data warung</span></legend>
+        <div class="grid">
+          <div class="field">
+            <label for="f-name">Shop name <span lang="id">Nama warung</span></label>
+            <input id="f-name" type="text" autocomplete="off" maxlength="80" aria-describedby="err-name">
+            <p id="err-name" class="error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-tagline">Tagline <span lang="id">Slogan</span></label>
+            <input id="f-tagline" type="text" autocomplete="off" maxlength="120" aria-describedby="err-tagline">
+            <p id="err-tagline" class="error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-area">Area <span lang="id">Daerah</span></label>
+            <input id="f-area" type="text" autocomplete="off" maxlength="80" aria-describedby="err-area">
+            <p id="err-area" class="error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-hours">Opening hours <span lang="id">Jam buka</span></label>
+            <input id="f-hours" type="text" autocomplete="off" maxlength="80" aria-describedby="err-hours">
+            <p id="err-hours" class="error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-whatsapp">WhatsApp number <span lang="id">Nomor WhatsApp</span></label>
+            <input id="f-whatsapp" type="tel" inputmode="tel" autocomplete="off" placeholder="0812 3456 7890" aria-describedby="err-whatsapp">
+            <p id="err-whatsapp" class="error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-primary">Theme colour <span lang="id">Warna tema</span></label>
+            <input id="f-primary" type="color" value="#9a3412" aria-describedby="err-primary">
+            <p id="err-primary" class="error" hidden></p>
+          </div>
+        </div>
+        <div class="checks" role="group" aria-labelledby="fulfil-label">
+          <span id="fulfil-label" class="label">Buyers can <span lang="id">Pembeli bisa</span></span>
+          <label class="check"><input id="f-pickup" type="checkbox" checked> Pick up <span lang="id">Ambil sendiri</span></label>
+          <label class="check"><input id="f-delivery" type="checkbox"> Delivery <span lang="id">Diantar</span></label>
+          <p id="err-fulfilment" class="error" hidden></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Menu <span class="id" lang="id">Daftar menu</span></legend>
+        <p class="note">Prices in whole rupiah, such as 15000. Tags are free words, separated by commas.</p>
+        <div class="table-wrap">
+          <table class="menu">
+            <thead>
+              <tr>
+                <th scope="col">Name</th><th scope="col">Category</th><th scope="col">Price (Rp)</th>
+                <th scope="col">Description</th><th scope="col">Tags</th><th scope="col">Available</th>
+                <th scope="col"><span class="sr">Remove</span></th>
+              </tr>
+            </thead>
+            <tbody id="menu-body"></tbody>
+          </table>
+        </div>
+        <p id="err-menu" class="error" hidden></p>
+        <button id="add-item" type="button" class="secondary">+ Add a dish</button>
+      </fieldset>
+
+      <div class="download">
+        <button id="download" type="button" class="primary">Download my warung site (.zip)</button>
+        <p id="download-status" class="status" role="status"></p>
+      </div>
+    </form>
+
+    <section id="online-panel" class="online" aria-labelledby="online-heading" hidden>
+      <h3 id="online-heading">Put it online (free) <span class="id" lang="id">Pasang di internet</span></h3>
+      <ol>
+        <li>Unzip the file you downloaded. You get <code>index.html</code>, <code>_headers</code> and a folder named after your shop, <code>&lt;slug&gt;</code>.</li>
+        <li>On <a href="https://dash.cloudflare.com/" rel="noopener">Cloudflare</a> (free account), open <strong>Workers &amp; Pages</strong>, then <strong>Create</strong>, then <strong>Pages</strong>, then <strong>Upload assets</strong>.</li>
+        <li>Give the project a name, drag the whole unzipped folder in (the one that holds <code>_headers</code>), and press <strong>Deploy</strong>.</li>
+        <li>Your assistant's network address is <code>https://&lt;project&gt;.pages.dev/&lt;slug&gt;/warung</code>, and your page is <code>https://&lt;project&gt;.pages.dev/&lt;slug&gt;/</code>. The <code>_headers</code> file is already inside the zip, so other sites can read it.</li>
+        <li><strong>Join Pasar:</strong> open an issue or pull request on <a data-repo="/issues/new" href="" rel="noopener">the project repository</a> (<span data-repo-text></span>) with your site address, and we will list your warung.</li>
+      </ol>
+    </section>
+  </section>
+
+  <section class="wrap">
+    <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+      <h2 id="assistant-heading">Ask the Builder assistant <span class="id" lang="id">Tanya asisten</span></h2>
+      <p>Paste your WhatsApp menu or tell it about your shop, in Bahasa Indonesia or English. It fills the form, and you check everything before it lands. It is optional: the form above works without it.</p>
+      <p class="assistant-note">Your messages and this page's data go to the AI provider you choose in the settings below. You confirm every change before it happens.</p>
+      <p id="assistant-status" role="status">Connecting the assistant&hellip; If this message stays, the assistant could not load. You can still use the form directly.</p>
+      <div id="agent-app">
+        <div data-ns-slot="header"></div>
+        <div class="assistant-panels">
+          <div data-ns-slot="chat"></div>
+          <div data-ns-slot="agents"></div>
+        </div>
+        <div data-ns-slot="settings"></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Warung Agent is open source. Built for the Open Agentic Web Challenge.</p>
+</footer>
+</body>
+</html>

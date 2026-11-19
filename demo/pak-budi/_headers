@@ -1,0 +1,23 @@
+# Cloudflare Pages (also Netlify). Public files other agent sites read need CORS.
+# Do not send X-Frame-Options or frame-ancestors for /bridge/: callers load
+# bridge/action-bridge.html in a hidden frame. It needs no CORS header.
+# If you host this folder under a subpath, put the subpath before each path below.
+/agent-manifest.json
+  Access-Control-Allow-Origin: *
+/warung.network.json
+  Access-Control-Allow-Origin: *
+/links.json
+  Access-Control-Allow-Origin: *
+/agent-mcp.json
+  Access-Control-Allow-Origin: *
+/.well-known/nsdeploy.json
+  Access-Control-Allow-Origin: *
+/.well-known/nsdeploy-agent.json
+  Access-Control-Allow-Origin: *
+/runtime/sandbox-worker.js
+  Content-Security-Policy: default-src 'none'; script-src blob:; connect-src 'none'; worker-src 'none'
+# The warung page itself must not be framed by other sites.
+/
+  Content-Security-Policy: frame-ancestors 'none'
+/index.html
+  Content-Security-Policy: frame-ancestors 'none'

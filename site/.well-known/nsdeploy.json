@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "warung_builder",
+      "front_man": "builder_guide",
+      "aliases": [
+        "warung_builder",
+        "builder_guide"
+      ],
+      "url": "warung_builder"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

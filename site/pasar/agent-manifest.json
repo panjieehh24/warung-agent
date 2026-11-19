@@ -1,0 +1,78 @@
+{
+  "brand": "Pasar Assistant",
+  "networks": [
+    {
+      "name": "pasar",
+      "front_man": "pasar_guide",
+      "hocon": "./pasar.network.json",
+      "description": "Tell me what you are hungry for. I ask the warung sites for menus and prices, compare them, and hand your order to the warung you pick.",
+      "tags": [
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "I want something spicy under Rp20.000 near Kemang. What can I get?",
+        "Bandingkan harga nasi goreng dan bakmi di warung yang ada.",
+        "Which warung has iced tea, and how much is it?",
+        "Order 2 nasi goreng for pickup from Warung Bu Sri.",
+        "Can you pay for my order and track the delivery driver?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [
+    "http://127.0.0.1:8081"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Pasar calls only the warung sites in allowed_peers, after the buyer agrees."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "pasar",
+    "front_man": "pasar_guide",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#b45309"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "pasar",
+        "front_man": "pasar_guide",
+        "aliases": [
+          "pasar",
+          "pasar_guide"
+        ],
+        "url": "pasar"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "list_warungs"
+    ]
+  }
+}

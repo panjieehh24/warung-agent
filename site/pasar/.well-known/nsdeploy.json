@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "pasar",
+      "front_man": "pasar_guide",
+      "aliases": [
+        "pasar",
+        "pasar_guide"
+      ],
+      "url": "pasar"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "shop": {
+    "name": "Warung Bu Sri",
+    "tagline": "Masakan rumahan Jawa, pedasnya bisa diatur",
+    "area": "Kemang, Jakarta Selatan",
+    "hours": "Senin–Sabtu 07.00–15.00",
+    "whatsapp": "620000000001",
+    "pickup": true,
+    "delivery": true
+  },
+  "theme": {
+    "primary": "#9a3412"
+  },
+  "menu": [
+    {
+      "id": "nasi-goreng-kampung",
+      "name": "Nasi Goreng Kampung",
+      "category": "Makanan",
+      "price": 15000,
+      "description": "Nasi goreng teri dengan telur ceplok dan kerupuk",
+      "tags": [
+        "pedas",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "nasi-pecel",
+      "name": "Nasi Pecel Madiun",
+      "category": "Makanan",
+      "price": 13000,
+      "description": "Sayur rebus, sambal kacang, tempe goreng, rempeyek",
+      "tags": [
+        "vegetarian",
+        "pedas",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "ayam-penyet",
+      "name": "Ayam Penyet Sambal Bawang",
+      "category": "Makanan",
+      "price": 22000,
+      "description": "Ayam goreng dipenyet dengan sambal bawang, lalapan dan nasi",
+      "tags": [
+        "pedas",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "sayur-lodeh",
+      "name": "Nasi Sayur Lodeh",
+      "category": "Makanan",
+      "price": 12000,
+      "description": "Lodeh labu siam dan kacang panjang, kuah santan",
+      "tags": [
+        "vegetarian",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "soto-ayam",
+      "name": "Soto Ayam Lamongan",
+      "category": "Makanan",
+      "price": 18000,
+      "description": "Kuah kuning, koya, telur rebus. Habis jam 11.00",
+      "tags": [
+        "halal"
+      ],
+      "available": false
+    },
+    {
+      "id": "tempe-mendoan",
+      "name": "Tempe Mendoan (3 pcs)",
+      "category": "Camilan",
+      "price": 6000,
+      "description": "Tempe tipis goreng tepung dengan cabai rawit",
+      "tags": [
+        "vegetarian",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "es-teh-manis",
+      "name": "Es Teh Manis",
+      "category": "Minuman",
+      "price": 4000,
+      "description": "",
+      "tags": [
+        "vegetarian",
+        "halal"
+      ],
+      "available": true
+    },
+    {
+      "id": "es-jeruk",
+      "name": "Es Jeruk Peras",
+      "category": "Minuman",
+      "price": 7000,
+      "description": "Jeruk peras segar",
+      "tags": [
+        "vegetarian",
+        "halal"
+      ],
+      "available": true
+    }
+  ]
+}

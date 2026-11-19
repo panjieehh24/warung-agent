@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pasar: find food across warung</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>Pasar</h1>
+    <p class="lead">Hungry? Say what you want, your budget and the area. Pasar's assistant asks the warung below and compares their answers.</p>
+    <p class="sub" lang="id">Lapar? Bilang mau makan apa, budgetnya dan di mana. Pasar menanyakan ke warung dan membandingkan jawabannya.</p>
+  </header>
+
+  <main>
+    <!--
+      Assistant mount. Keep the ids: site.js uses #assistant-status and #agent-app,
+      and the runtime fills the data-ns-slot elements.
+    -->
+    <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+      <h2 id="assistant-heading">Ask Pasar</h2>
+      <p>Try "something spicy under Rp20.000 near Kemang". Pasar asks the warung for menus, prices and availability, and an order opens in the warung's own window, where you confirm it. <span class="sub" lang="id">Pesanan dikonfirmasi di jendela warung sendiri.</span></p>
+      <p class="assistant-note">Your messages and this page's data go to the LLM provider you choose in the settings below. Pasar asks a warung only after you agree on a card, and sends it only food, quantities and area, never your name, phone or address.</p>
+      <p id="assistant-status" role="status">Connecting the assistant… If this message stays, the assistant could not load. You can still use the page directly.</p>
+      <div id="agent-app">
+        <div data-ns-slot="header"></div>
+        <div class="assistant-panels">
+          <div data-ns-slot="chat"></div>
+          <div data-ns-slot="agents"></div>
+        </div>
+        <div data-ns-slot="settings"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="warung-heading">
+      <h2 id="warung-heading">Warung on Pasar <span class="sub" lang="id">Warung di Pasar</span></h2>
+      <p id="warung-status" role="status">Loading the warung…</p>
+      <div id="warung-list" class="warung-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Each warung runs its own site and its own assistant. Ordering opens that warung's window; Pasar never takes payment or tracks delivery.</p>
+  </footer>
+</body>
+</html>

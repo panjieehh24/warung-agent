@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "shop": {
+    "name": "Bakmi Pak Budi",
+    "tagline": "Bakmi ayam dan bakso urat, buka sampai malam",
+    "area": "Mampang, Jakarta Selatan",
+    "hours": "Setiap hari 11.00–22.00",
+    "whatsapp": "620000000002",
+    "pickup": true,
+    "delivery": false
+  },
+  "theme": { "primary": "#1e3a8a" },
+  "menu": [
+    { "id": "bakmi-ayam", "name": "Bakmi Ayam", "category": "Bakmi", "price": 17000, "description": "Mi kuning, ayam kecap, sawi, pangsit goreng", "tags": ["halal"], "available": true },
+    { "id": "bakmi-ayam-pedas", "name": "Bakmi Ayam Cabe Ijo", "category": "Bakmi", "price": 19000, "description": "Bakmi ayam dengan sambal cabai hijau", "tags": ["pedas", "halal"], "available": true },
+    { "id": "bakmi-jamur", "name": "Bakmi Jamur Tahu", "category": "Bakmi", "price": 16000, "description": "Tanpa daging: jamur tiram, tahu, sawi", "tags": ["vegetarian", "halal"], "available": true },
+    { "id": "bakso-urat", "name": "Bakso Urat Kuah", "category": "Bakso", "price": 20000, "description": "Bakso urat sapi, bihun, kuah kaldu", "tags": ["halal"], "available": true },
+    { "id": "mie-ayam-bakso", "name": "Mi Ayam Bakso", "category": "Bakmi", "price": 23000, "description": "Bakmi ayam ditambah dua bakso urat", "tags": ["halal"], "available": true },
+    { "id": "pangsit-goreng", "name": "Pangsit Goreng (5 pcs)", "category": "Camilan", "price": 8000, "description": "", "tags": ["halal"], "available": true },
+    { "id": "es-teh-tawar", "name": "Es Teh Tawar", "category": "Minuman", "price": 3000, "description": "", "tags": ["vegetarian", "halal"], "available": true },
+    { "id": "es-campur", "name": "Es Campur", "category": "Minuman", "price": 12000, "description": "Cincau, kolang-kaling, alpukat, susu", "tags": ["vegetarian", "halal"], "available": true }
+  ]
+}

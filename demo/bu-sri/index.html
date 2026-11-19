@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warung</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="shop">
+      <h1 id="shop-name">Warung</h1>
+      <p id="shop-tagline"></p>
+      <p id="shop-meta" class="meta"></p>
+    </header>
+    <p id="load-error" role="alert" hidden></p>
+    <main>
+      <section aria-labelledby="menu-heading">
+        <h2 id="menu-heading">Menu</h2>
+        <div id="menu"></div>
+      </section>
+      <section id="basket" class="panel" aria-labelledby="basket-heading">
+        <h2 id="basket-heading">Pesanan kamu</h2>
+        <p id="basket-empty">Belum ada pesanan. Tambahkan menu di atas.</p>
+        <ul id="basket-list"></ul>
+        <p class="total">Total: <strong id="basket-total">Rp0</strong></p>
+        <label for="fulfilment">Ambil atau diantar</label>
+        <select id="fulfilment"></select>
+        <label for="note">Catatan (opsional, jangan tulis nama, nomor HP, atau alamat)</label>
+        <input id="note" type="text" maxlength="120" autocomplete="off">
+        <p id="order-error" role="alert" hidden></p>
+        <button id="order-button" type="button">Pesan via WhatsApp</button>
+        <p class="hint">Tombol ini membuka WhatsApp dengan pesanan yang sudah terisi. Warung yang mengonfirmasi pesananmu di WhatsApp.</p>
+      </section>
+      <section id="confirmation" class="panel" aria-labelledby="confirm-heading" hidden>
+        <h2 id="confirm-heading">Buka WhatsApp lalu tekan Kirim</h2>
+        <p>Pesanan belum terkirim sampai kamu menekan Kirim di WhatsApp.</p>
+        <p>Kode pesanan: <strong id="confirm-code"></strong></p>
+        <p>Total: <strong id="confirm-total"></strong></p>
+        <p><a id="confirm-link" class="button" href="#" target="_blank" rel="noopener">Buka WhatsApp</a></p>
+        <p>Pesanan dikonfirmasi oleh warung di WhatsApp.</p>
+      </section>
+    </main>
+    <!-- Assistant mount: the runtime fills the data-ns-slot elements. -->
+    <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+      <h2 id="assistant-heading">Tanya asisten warung</h2>
+      <p>Tanya menu, harga, atau minta rekomendasi, lalu asisten menyiapkan pesanan lewat WhatsApp. Ask in English if you like.</p>
+      <p class="assistant-note">Pesan kamu dan data menu halaman ini dikirim ke penyedia model AI yang kamu pilih di pengaturan di bawah. Kamu mengonfirmasi dulu sebelum pesanan dikirim.</p>
+      <p id="assistant-status" role="status">Menyambungkan asisten… Kalau pesan ini tidak hilang, asisten tidak bisa dimuat. Kamu tetap bisa memesan lewat menu di atas.</p>
+      <div id="agent-app">
+        <div data-ns-slot="header"></div>
+        <div class="assistant-panels">
+          <div data-ns-slot="chat"></div>
+          <div data-ns-slot="agents"></div>
+        </div>
+        <div data-ns-slot="settings"></div>
+      </div>
+    </section>
+    <footer><small>Dibuat dengan Warung Agent</small></footer>
+  </div>
+</body>
+</html>

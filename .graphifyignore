@@ -1,0 +1,10 @@
+# Permanent: graph our own code only. The vendored runtime is copied into several folders
+# and would flood the graph with same-named functions. demo/ is generated.
+vendor/
+**/runtime/
+demo/
+site/lib/
+# Template copies from the skill (identical in every site) and build-kit's generated copy.
+**/tests/stub_*.mjs
+**/tests/scripted_model.mjs
+site/kit/warung/warung-data.mjs

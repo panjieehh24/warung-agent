@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "pasar"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}

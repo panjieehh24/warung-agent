@@ -1,0 +1,12 @@
+{
+  "name": "warung-agent",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build-all.mjs",
+    "test": "node --test \"site/**/tests/*.test.mjs\" \"tests/*.test.mjs\"",
+    "serve": "node scripts/serve-all.mjs"
+  }
+}

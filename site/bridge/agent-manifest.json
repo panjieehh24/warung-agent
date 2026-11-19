@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "warung_builder"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}
