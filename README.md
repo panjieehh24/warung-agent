@@ -76,7 +76,7 @@ the user any write first.
 3. Push to `main`. [.github/workflows/pages.yml](.github/workflows/pages.yml) runs the tests,
    checks the generated files are current, and publishes `site/` to GitHub Pages, which
    sends CORS on every file.
-4. Set `REPO_URL` in `site/config.js`.
+4. `REPO_URL` in `site/config.js` points to this repo; change it if you fork.
 
 `node scripts/set-origins.mjs --local` switches back for local work.
 
