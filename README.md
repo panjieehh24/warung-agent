@@ -63,16 +63,27 @@ the user any write first.
 
 ## Deploy
 
-1. Create the demo warungs' host (Cloudflare Pages project `warung-agent-demo`), then switch
-   the origins and rebuild:
+Live now: main site `https://panjieehh24.github.io/warung-agent/`; demo warungs
+`https://warung-agent-demo.warung-agent.workers.dev/` (`/bu-sri/`, `/pak-budi/`).
+
+1. Switch the origins and rebuild:
 
    ```shell
-   node scripts/set-origins.mjs --main https://<github-user>.github.io --warungs https://warung-agent-demo.pages.dev
+   node scripts/set-origins.mjs --main https://<github-user>.github.io --warungs https://warung-agent-demo.<account>.workers.dev
    ```
 
-2. Upload `demo/` to Cloudflare Pages: drag and drop, or
-   `npx wrangler pages deploy demo --project-name warung-agent-demo`. `demo/_headers`
-   sets CORS.
+2. Upload `demo/` to Cloudflare. New Cloudflare accounts host "Pages" on Workers, so
+   `wrangler pages deploy` can't find the project. Use:
+
+   ```shell
+   npx wrangler login
+   npx wrangler deploy --assets demo --name warung-agent-demo --compatibility-date 2026-11-01
+   ```
+
+   `demo/_headers` sets CORS, and Cloudflare applies it. Cloudflare redirects
+   `bridge/action-bridge.html` to `bridge/action-bridge`; the runtime follows the redirect
+   (`check_partner.mjs` passes). A brand-new `workers.dev` address can take a few minutes
+   before HTTPS works.
 3. Push to `main`. [.github/workflows/pages.yml](.github/workflows/pages.yml) runs the tests,
    checks the generated files are current, and publishes `site/` to GitHub Pages, which
    sends CORS on every file.
