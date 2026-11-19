@@ -27,7 +27,7 @@ class BridgeActions {
       effect: "read",
       availability: "bridge",
       // The menu is what the public page already shows, so every site may read it.
-      callerOrigins: "*",
+      callerOrigins: ["*"],
       inputSchema: {
         type: "object",
         properties: {},

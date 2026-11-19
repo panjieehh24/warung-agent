@@ -25,6 +25,10 @@ Design: [docs/design.md](docs/design.md). Plan: [docs/build-plan.md](docs/build-
    WhatsApp with the order. The demo shops use placeholder numbers, so WhatsApp says the
    number isn't registered.
 
+If you see **HTTP 429** ("temporarily rate-limited upstream"), the free model is busy, not
+the site. Open **Advanced settings (optional)**, put `nvidia/nemotron-3-ultra-550b-a55b:free`
+or `google/gemma-4-26b-a4b-it:free` in **Model**, and select **Save setup**. Both are free.
+
 ## Run locally
 
 Requires Node 22 or newer. There are no npm dependencies.
