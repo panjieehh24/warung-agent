@@ -25,7 +25,7 @@ export class StubDocument {
    * :param url: The page's address in the test, which document.URL gives.
    * :return: The document.
    */
-  static fromHtml(html, url = "http://localhost:8080/") {
+  static fromHtml(html, url = "https://panjieehh24.github.io/") {
     const ids = new Set();
     for (const match of html.matchAll(/\sid="([^"]+)"/g)) {
       ids.add(match[1]);
@@ -61,7 +61,7 @@ export class StubDocument {
    * :param hiddenIds: The ids of elements that start hidden.
    * :param url: The page's address in the test, which document.URL gives.
    */
-  constructor(knownIds = null, hiddenIds = new Set(), url = "http://localhost:8080/") {
+  constructor(knownIds = null, hiddenIds = new Set(), url = "https://panjieehh24.github.io/") {
     this.knownIds = knownIds;
     this.hiddenIds = hiddenIds;
     this.elements = new Map();

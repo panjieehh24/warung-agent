@@ -10,7 +10,7 @@ import { StubElement } from "./stub_element.mjs";
 import { StubOption } from "./stub_option.mjs";
 
 export const NETWORK_NAME = "warung_builder";
-export const BASE = "http://localhost:8080";
+export const BASE = "https://panjieehh24.github.io";
 export { ScriptedModel, StubElement };
 
 // Page scripts touch the DOM when they load, so give them a stand-in first.

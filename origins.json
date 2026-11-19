@@ -1,4 +1,4 @@
 {
-  "main": "http://localhost:8080",
-  "warungs": "http://127.0.0.1:8081"
+  "main": "https://panjieehh24.github.io",
+  "warungs": "https://warung-agent-demo.warung-agent.workers.dev"
 }

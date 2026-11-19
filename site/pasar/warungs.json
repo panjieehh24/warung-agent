@@ -3,14 +3,14 @@
     "name": "Warung Bu Sri",
     "area": "Kemang, Jakarta Selatan",
     "foods": ["nasi goreng", "pecel", "ayam penyet", "lodeh", "tempe mendoan", "iced tea"],
-    "network_url": "http://127.0.0.1:8081/bu-sri/warung",
-    "page_url": "http://127.0.0.1:8081/bu-sri/"
+    "network_url": "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung",
+    "page_url": "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/"
   },
   {
     "name": "Bakmi Pak Budi",
     "area": "Mampang, Jakarta Selatan",
     "foods": ["bakmi", "bakso", "pangsit", "es campur"],
-    "network_url": "http://127.0.0.1:8081/pak-budi/warung",
-    "page_url": "http://127.0.0.1:8081/pak-budi/"
+    "network_url": "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung",
+    "page_url": "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/"
   }
 ]

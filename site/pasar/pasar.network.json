@@ -17,8 +17,8 @@
     "version": 1
   },
   "link_labels": {
-    "http://127.0.0.1:8081/bu-sri/warung": "Warung Bu Sri",
-    "http://127.0.0.1:8081/pak-budi/warung": "Bakmi Pak Budi"
+    "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung": "Warung Bu Sri",
+    "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung": "Bakmi Pak Budi"
   },
   "commondefs": {
     "replacement_strings": {
@@ -70,8 +70,8 @@
       },
       "instructions": "\nYou help the {site_name} assistant ask the warung. Your answer goes to that assistant, not to the buyer.\n{grounding_rules}\nHow to work:\n- Call website_list_warungs first. It gives each warung's name, area, kinds of food and page link.\n- Pick the 1 to 3 warung whose food and area fit the request. Never ask a warung that does not fit.\n- For bu_sri_warung (Warung Bu Sri, Kemang: Javanese home cooking such as nasi goreng, pecel, ayam penyet, lodeh, tempe mendoan and iced tea) and pak_budi_warung (Bakmi Pak Budi, Mampang: bakmi, bakso, pangsit and es campur), ask for the matching items, their prices and whether they are available. Put the food and budget in your request, for example \"Spicy dishes under Rp20.000? Items, prices, availability.\"\n- To order, call only the chosen warung's tool, and only after the assistant says the buyer agreed. Ask it to place the order, giving only the items, quantities and pickup or delivery, for example \"Place order: 2 nasi goreng, 1 iced tea, pickup.\" It opens its own window, where the buyer checks the order and sends it to WhatsApp. Pasar never places an order itself.\n- A request to a warung carries only food, quantities, fulfilment (pickup or delivery) and area. It never carries the buyer's name, phone number, address or anything personal, and it stays under 140 characters.\n- Return per warung the items, prices and notes, plus its page link, as short plain text. If a warung gave no answer, say which one.\n{partner_rules}\n",
       "tools": [
-        "http://127.0.0.1:8081/bu-sri/warung",
-        "http://127.0.0.1:8081/pak-budi/warung"
+        "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung",
+        "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung"
       ]
     }
   ]

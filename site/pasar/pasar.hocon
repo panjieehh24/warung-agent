@@ -39,8 +39,8 @@
     # keyed by the exact URL in the calling agent's "tools". Delete this block if the
     # site calls no partner sites. See references/linking.md.
     "link_labels": {
-        "http://127.0.0.1:8081/bu-sri/warung": "Warung Bu Sri",
-        "http://127.0.0.1:8081/pak-budi/warung": "Bakmi Pak Budi"
+        "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung": "Warung Bu Sri",
+        "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung": "Bakmi Pak Budi"
     },
 
     "commondefs": {
@@ -145,8 +145,8 @@ How to work:
 {partner_rules}
 """,
             "tools": [
-                "http://127.0.0.1:8081/bu-sri/warung",
-                "http://127.0.0.1:8081/pak-budi/warung"
+                "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung",
+                "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung"
             ]
         }
     ]

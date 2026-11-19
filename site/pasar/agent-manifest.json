@@ -24,7 +24,7 @@
     "byok_router": "https://api.otari.ai/api/v1"
   },
   "allowed_peers": [
-    "http://127.0.0.1:8081"
+    "https://warung-agent-demo.warung-agent.workers.dev"
   ],
   "peer_policy": {
     "mode": "closed",

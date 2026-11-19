@@ -13,11 +13,11 @@ import { ScriptedModel } from "./scripted_model.mjs";
 
 const NETWORK_NAME = "pasar";
 const READ_ACTION = "list_warungs";
-const BASE = "http://localhost:8080";
-const PARTNER_ORIGIN = "http://127.0.0.1:8081";
+const BASE = "https://panjieehh24.github.io";
+const PARTNER_ORIGIN = "https://warung-agent-demo.warung-agent.workers.dev";
 const PARTNER_TOOLS = {
-  bu_sri_warung: "http://127.0.0.1:8081/bu-sri/warung",
-  pak_budi_warung: "http://127.0.0.1:8081/pak-budi/warung",
+  bu_sri_warung: "https://warung-agent-demo.warung-agent.workers.dev/bu-sri/warung",
+  pak_budi_warung: "https://warung-agent-demo.warung-agent.workers.dev/pak-budi/warung",
 };
 const CALL_BUDGET = 16000;
 

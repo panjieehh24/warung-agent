@@ -18,7 +18,7 @@ export class PlaceOrder {
    * The site allowed to order through this window: the Pasar, as an exact origin.
    * scripts/set-origins.mjs swaps this one string, so keep it on its own line.
    */
-  static CALLERS = ["http://localhost:8080"];
+  static CALLERS = ["https://panjieehh24.github.io"];
 
   /**
    * Describe the shared order.

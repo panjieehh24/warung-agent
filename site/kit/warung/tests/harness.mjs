@@ -10,7 +10,7 @@ import { StubDocument } from "./stub_document.mjs";
 import { StubElement } from "./stub_element.mjs";
 
 export const NETWORK_NAME = "warung";
-export const BASE = "http://localhost:8080";
+export const BASE = "https://panjieehh24.github.io";
 export const WARUNG = JSON.parse(await readFile(new URL("../warung.json", import.meta.url), "utf8"));
 
 /** Every window.open(url, ...) the page made, newest last. */
