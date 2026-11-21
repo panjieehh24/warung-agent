@@ -11,3 +11,5 @@ graphify-out/
 !.dev.vars.example
 .env*
 !.env.example
+# Builder downloads hold a real WhatsApp number
+*.zip
