@@ -105,7 +105,7 @@ body > dialog button { margin-right: 8px; }
 .assistant-review dd { margin: 0; overflow-wrap: anywhere; }
 .assistant-review details { margin: 12px 0; }
 .assistant-review pre { white-space: pre-wrap; overflow-wrap: anywhere; }
-.assistant-review .assistant-decline { background: transparent; color: inherit; border: 1px solid currentColor; }
+.assistant-review .assistant-decline, button.secondary { background: transparent; color: inherit; border: 1px solid currentColor; }
 
 @media (max-width: 760px) {
   .assistant-panels { grid-template-columns: 1fr; }

@@ -174,7 +174,7 @@ class Page {
       add.addEventListener("click", () => this.changeQty(item.id, 1));
       buy.append(add);
     } else {
-      buy.append(el("span", "Habis", "chip soldout"));
+      buy.append(el("span", "Habis · Sold out", "chip soldout"));
     }
     card.append(info, buy);
     return card;

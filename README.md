@@ -27,7 +27,8 @@ Design: [docs/design.md](docs/design.md). Plan: [docs/build-plan.md](docs/build-
 
 If you see **HTTP 429** ("temporarily rate-limited upstream"), the free model is busy, not
 the site. Open **Advanced settings (optional)**, put `nvidia/nemotron-3-ultra-550b-a55b:free`
-or `google/gemma-4-26b-a4b-it:free` in **Model**, and select **Save setup**. Both are free.
+or `google/gemma-4-26b-a4b-it:free` in **Model**, and select **Save and start**. Both are
+free. **Save setup** only stores the setup and does not switch the open tab.
 
 ## Run locally
 

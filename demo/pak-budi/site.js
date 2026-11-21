@@ -28,8 +28,8 @@ export class AssistantMount {
     "send_order_whatsapp": {
       title: "Kirim pesanan ke WhatsApp?",
       sentence: "WhatsApp akan terbuka dengan pesanan di bawah, terisi untuk nomor warung. Warung yang mengonfirmasi di WhatsApp. Belum ada pembayaran.",
-      confirm: "Kirim ke WhatsApp",
-      decline: "Jangan pesan",
+      confirm: "Kirim ke WhatsApp · Send on WhatsApp",
+      decline: "Jangan pesan · Don't order",
     },
   };
 

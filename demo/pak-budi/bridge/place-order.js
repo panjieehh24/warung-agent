@@ -109,8 +109,8 @@ export class PlaceOrder {
     document.body.classList.add("order-window");
     const box = PlaceOrder.element("main", "", "panel");
     box.append(
-      PlaceOrder.element("h1", `Pesan di ${data.shop.name}`),
-      PlaceOrder.element("p", `Asisten di ${state.caller} meminta pesanan ini. Periksa dulu. Nama dan alamatmu tidak dikirim lewat chat: warung menanyakannya di WhatsApp.`),
+      PlaceOrder.element("h1", `Pesan di ${data.shop.name} · Order at ${data.shop.name}`),
+      PlaceOrder.element("p", `Asisten di ${state.caller} meminta pesanan ini. Periksa dulu. Nama dan alamatmu tidak dikirim lewat chat: warung menanyakannya di WhatsApp. / An assistant on ${state.caller} asked for this order. Check it first. Your name and address are not sent: the warung asks for them on WhatsApp.`),
       PlaceOrder.summary(state),
       PlaceOrder.buttons(state, box, resolve),
     );
@@ -134,7 +134,7 @@ export class PlaceOrder {
     section.append(
       list,
       PlaceOrder.element("p", `Total: ${formatRupiah(checked.total)}`, "total"),
-      PlaceOrder.element("p", checked.fulfilment === "pickup" ? "Ambil sendiri" : "Diantar (ongkir dikonfirmasi di chat)"),
+      PlaceOrder.element("p", checked.fulfilment === "pickup" ? "Ambil sendiri · Pickup" : "Diantar · Delivery (ongkir dikonfirmasi di chat · fee confirmed in chat)"),
       PlaceOrder.element("p", `WhatsApp warung: +${data.shop.whatsapp}`),
     );
     if (checked.note) {
@@ -144,9 +144,9 @@ export class PlaceOrder {
   }
 
   static buttons(state, box, resolve) {
-    const send = PlaceOrder.element("button", "Kirim ke WhatsApp");
+    const send = PlaceOrder.element("button", "Kirim ke WhatsApp · Send on WhatsApp");
     send.type = "button";
-    const cancel = PlaceOrder.element("button", "Jangan pesan", "secondary");
+    const cancel = PlaceOrder.element("button", "Jangan pesan · Don't order", "secondary");
     cancel.type = "button";
     send.addEventListener("click", PlaceOrder.send.bind(null, state, box, resolve));
     cancel.addEventListener("click", PlaceOrder.cancel.bind(null, box, resolve));
@@ -173,13 +173,13 @@ export class PlaceOrder {
 
   static confirmation(prepared) {
     const section = PlaceOrder.element("section");
-    const link = PlaceOrder.element("a", "Buka WhatsApp", "button");
+    const link = PlaceOrder.element("a", "Buka WhatsApp · Open WhatsApp", "button");
     link.href = prepared.url;
     link.target = "_blank";
     link.rel = "noopener";
     section.append(
-      PlaceOrder.element("h2", "Buka WhatsApp lalu tekan Kirim"),
-      PlaceOrder.element("p", "Pesanan belum terkirim sampai kamu menekan Kirim di WhatsApp."),
+      PlaceOrder.element("h2", "Buka WhatsApp lalu tekan Kirim · Open WhatsApp, then press Send"),
+      PlaceOrder.element("p", "Pesanan belum terkirim sampai kamu menekan Kirim di WhatsApp. / The order is not sent until you press Send in WhatsApp."),
       PlaceOrder.element("p", `Kode pesanan: ${prepared.code}. Total: ${formatRupiah(prepared.total)}.`),
       link,
       PlaceOrder.element("p", "Pesanan dikonfirmasi oleh warung di WhatsApp."),
@@ -188,7 +188,7 @@ export class PlaceOrder {
   }
 
   static cancel(box, resolve) {
-    box.replaceChildren(PlaceOrder.element("h2", "Tidak jadi memesan"));
+    box.replaceChildren(PlaceOrder.element("h2", "Tidak jadi memesan · Order cancelled"));
     resolve({ ok: false, reason: "Pembeli membatalkan di jendela pesanan. Tidak ada yang dipesan." });
   }
 }

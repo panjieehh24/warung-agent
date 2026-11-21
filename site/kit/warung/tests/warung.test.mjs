@@ -259,7 +259,7 @@ test("the order tool is hidden without a confirmation callback, and a decline se
 
 test("the dialog has Indonesian words, and its details match the call", async () => {
   const words = AssistantMount.DIALOGS[ORDER];
-  assert.deepEqual([words.confirm, words.decline], ["Kirim ke WhatsApp", "Jangan pesan"]);
+  assert.deepEqual([words.confirm, words.decline], ["Kirim ke WhatsApp · Send on WhatsApp", "Jangan pesan · Don't order"]);
   assert.deepEqual(Object.keys(AssistantMount.DIALOGS), [ORDER]);
   assert.ok(AssistantMount.GREETING.includes("Halo") && AssistantMount.GREETING.includes("Hi!"));
   const actions = await registry();
@@ -282,8 +282,8 @@ test("only the dialog's confirm button confirms; a refused call opens no dialog"
   AssistantMount.defaultReview = decline;
   document.provide("#ns-input", [new StubElement("textarea")]);
   const item = dialogItem(VALID);
-  assert.equal(await answerDialog(item, "Kirim ke WhatsApp"), true);
-  assert.equal(await answerDialog(item, "Jangan pesan"), false);
+  assert.equal(await answerDialog(item, "Kirim ke WhatsApp · Send on WhatsApp"), true);
+  assert.equal(await answerDialog(item, "Jangan pesan · Don't order"), false);
   assert.equal(await answerDialog(item, null), false);
   const dialogs = document.body.children.length;
   await assert.rejects(AssistantMount.review([dialogItem({ ...VALID, fulfilment: "kurir" })]), /pickup/);
@@ -320,7 +320,7 @@ test("the page renders the menu by category, with sold-out items marked and no d
   const menu = document.getElementById("menu");
   assert.deepEqual(menu.children.map((section) => section.children[0].textContent), ["Makanan", "Camilan", "Minuman"]);
   const soto = menu.children[0].children.slice(1).find((card) => card.className.includes("sold-out"));
-  assert.ok(soto.querySelectorAll("span").some((chip) => chip.textContent === "Habis"));
+  assert.ok(soto.querySelectorAll("span").some((chip) => chip.textContent === "Habis · Sold out"));
   assert.equal(soto.querySelectorAll("button").length, 0);
   assert.equal(document.getElementById("fulfilment").children.length, 2);
   assert.equal(document.getElementById("app").getAttribute("style"), "--accent: #9a3412");
@@ -353,8 +353,8 @@ test("PlaceOrder: Send opens wa.me and resolves with the receipt although open()
   assert.ok(opened[0].startsWith(`https://wa.me/${WARUNG.shop.whatsapp}?text=`));
   assert.ok(opened[0].includes(encodeURIComponent(receipt.order_code)));
   const texts = box.children[0].children.map((child) => child.textContent);
-  assert.ok(texts.includes("Buka WhatsApp lalu tekan Kirim"));
-  assert.ok(texts.includes("Pesanan belum terkirim sampai kamu menekan Kirim di WhatsApp."));
+  assert.ok(texts.includes("Buka WhatsApp lalu tekan Kirim · Open WhatsApp, then press Send"));
+  assert.ok(texts.includes("Pesanan belum terkirim sampai kamu menekan Kirim di WhatsApp. / The order is not sent until you press Send in WhatsApp."));
 });
 
 test("PlaceOrder: Jangan pesan resolves ok false with a reason and opens nothing", async () => {
